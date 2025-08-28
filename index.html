@@ -24,7 +24,7 @@
     .brand p{margin:0; color:var(--muted); font-size:14px; font-weight:500}
     
     /* Botón menú hamburguesa */
-    .menu-toggle{display:none; background:none; border:none; font-size:24px; cursor:pointer; padding:8px; border-radius:8px; color:var(--ink); transition:all 0.3s ease}
+    .menu-toggle{display:none; background:none; border:none; font-size:24px; cursor:pointer; padding:8px; border-radius:8px; color:var(--ink); transition:all 0.3s ease; z-index:1000}
     .menu-toggle:hover{background:var(--pill)}
     
     /* Navegación responsive */
@@ -88,9 +88,9 @@
       .wrap{padding:0 20px}
       .nav{flex-direction:row; align-items:center; gap:16px; position:relative}
       .brand{justify-content:flex-start; text-align:left; flex:1}
-      .menu-toggle{display:block !important; z-index:200}
-      .links{display:none; position:absolute; top:100%; left:0; right:0; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px; flex-direction:column; gap:8px; margin-top:8px; z-index:150}
-      .links.menu-open{display:flex}
+      .menu-toggle{display:block !important; z-index:1000}
+      .links{display:none; position:absolute; top:100%; left:0; right:0; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px; flex-direction:column; gap:8px; margin-top:8px; z-index:999}
+      .links.menu-open{display:flex !important}
       .links a{font-size:15px; padding:12px 18px; border-radius:8px; background:var(--pill); text-align:center; font-weight:600; border:1px solid var(--line); width:100%; display:block}
       .links a:hover,.links a.active{background:var(--gradient); color:#fff; border-color:transparent}
       .hero{padding:60px 0 30px}
@@ -136,7 +136,6 @@
           <p>Outsystems Developer · Full Stack · Systems Analyst</p>
         </div>
       </div>
-      <button id="menuToggle" class="menu-toggle" aria-label="Abrir menú">☰</button>
       <nav class="links" aria-label="Secciones">
         <a href="#experiencia">Experiencia</a>
         <a href="#proyectos">Proyectos</a>
@@ -144,6 +143,7 @@
         <a href="#educacion">Educación</a>
         <a href="#contacto">Contacto</a>
       </nav>
+      <button id="menuToggle" class="menu-toggle" aria-label="Abrir menú">☰</button>
       <button id="themeToggle" class="btn btn--ghost" aria-label="Cambiar tema">🌓</button>
     </div>
   </header>
@@ -366,10 +366,17 @@
       // Toggle menú mobile
       var menuToggle = document.getElementById('menuToggle');
       var links = document.querySelector('.links');
+      console.log('Menu toggle:', menuToggle);
+      console.log('Links:', links);
+      
       if(menuToggle && links){
+        console.log('Agregando event listener al menú');
         menuToggle.addEventListener('click', function(){
+          console.log('Botón menú clickeado');
           links.classList.toggle('menu-open');
-          menuToggle.textContent = links.classList.contains('menu-open') ? '✕' : '☰';
+          var isOpen = links.classList.contains('menu-open');
+          console.log('Menú abierto:', isOpen);
+          menuToggle.textContent = isOpen ? '✕' : '☰';
         });
         
         // Cerrar menú al hacer clic en un enlace
@@ -380,6 +387,8 @@
             menuToggle.textContent = '☰';
           });
         });
+      } else {
+        console.log('ERROR: No se encontraron elementos del menú');
       }
       
       // Toggle tema claro/oscuro manual
