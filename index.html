@@ -371,12 +371,22 @@
       // Cerrar menú al hacer clic en enlaces
       var menuCheckbox = document.getElementById('menuCheckbox');
       var menuLinks = document.querySelectorAll('.links a');
+      console.log('Menu checkbox:', menuCheckbox);
+      console.log('Menu links:', menuLinks);
+      
       if(menuCheckbox && menuLinks.length > 0){
-        menuLinks.forEach(function(link){
+        console.log('Agregando event listeners a los enlaces del menú');
+        menuLinks.forEach(function(link, index){
           link.addEventListener('click', function(){
+            console.log('Enlace clickeado:', link.textContent, 'índice:', index);
             menuCheckbox.checked = false;
+            console.log('Checkbox unchecked:', menuCheckbox.checked);
           });
         });
+      } else {
+        console.log('ERROR: No se encontraron elementos del menú');
+        console.log('menuCheckbox existe:', !!menuCheckbox);
+        console.log('menuLinks length:', menuLinks.length);
       }
       
       // Toggle tema claro/oscuro manual
