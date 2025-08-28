@@ -42,14 +42,16 @@
     .btn--ghost:hover{background:var(--pill); transform:translateY(-1px); border-color:var(--brand)}
 
     /* Hero Section */
-    .hero{padding:80px 0 40px; text-align:center}
+    .hero{padding:100px 0 60px; text-align:center; margin-bottom:40px}
     .hero h2{font-size:clamp(32px, 5vw, 52px); line-height:1.1; margin:0 0 20px; font-weight:700; letter-spacing:-0.02em; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text}
     .hero p{color:var(--muted); font-size:20px; margin:0 0 32px; line-height:1.6; max-width:600px; margin-left:auto; margin-right:auto}
     .cta{display:flex; gap:16px; flex-wrap:wrap; justify-content:center}
     .meta{margin-top:16px; font-size:14px; color:var(--muted); font-weight:500}
 
     /* Secciones */
-    section{padding:60px 0}
+    section{padding:80px 0}
+    section:last-of-type{padding-bottom:100px}
+    section + section{margin-top:20px}
     h3.section-title{font-size:28px; margin:0 0 32px; text-align:center; font-weight:700; letter-spacing:-0.025em; position:relative}
     h3.section-title::after{content:''; position:absolute; bottom:-12px; left:50%; transform:translateX(-50%); width:60px; height:3px; background:var(--gradient); border-radius:2px}
 
@@ -79,7 +81,7 @@
     .xp li{margin-bottom:6px}
 
     /* Footer */
-    footer{border-top:1px solid var(--line); padding:40px 0; text-align:center; color:var(--muted); font-size:14px; background:var(--pill)}
+    footer{border-top:1px solid var(--line); padding:80px 0; text-align:center; color:var(--muted); font-size:14px; background:var(--pill); margin-top:60px}
 
     /* Test badge */
     #test-badge{position:fixed; right:12px; bottom:12px; font:12px/1.2 ui-sans-serif; background:var(--card); color:var(--ink); border:1px solid var(--line); padding:8px 10px; border-radius:999px; box-shadow:var(--shadow); z-index:100}
