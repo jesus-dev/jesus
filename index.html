@@ -139,6 +139,94 @@
     .theme-toggle .moon-icon{display:none; opacity:0; transition:opacity 0.3s ease; color:var(--ink)}
     html[data-theme="dark"] .theme-toggle .sun-icon{display:none; opacity:0}
     html[data-theme="dark"] .theme-toggle .moon-icon{display:block; opacity:1}
+    
+    /* Estilos para impresión/PDF */
+    @media print {
+      @page {
+        size: A4;
+        margin: 15mm;
+      }
+      
+      body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        line-height: 1.4;
+      }
+      
+      .nav, .theme-toggle, #test-badge {
+        display: none !important;
+      }
+      
+      header {
+        border-bottom: 2px solid #333;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+      
+      .hero {
+        padding: 40px 0;
+        text-align: left;
+      }
+      
+      .hero h2 {
+        color: black !important;
+        font-size: 24pt;
+        margin-bottom: 15px;
+      }
+      
+      .hero p {
+        color: #333 !important;
+        font-size: 14pt;
+      }
+      
+      .cta {
+        display: none;
+      }
+      
+      section {
+        page-break-inside: avoid;
+        margin-bottom: 30px;
+      }
+      
+      .card {
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+      }
+      
+      .grid {
+        display: block;
+      }
+      
+      .grid.cols-2, .grid.cols-3, .grid.cols-4 {
+        grid-template-columns: 1fr;
+      }
+      
+      .pill {
+        background: #f0f0f0 !important;
+        color: #333 !important;
+        border: 1px solid #ccc !important;
+      }
+      
+      footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #ccc;
+        text-align: center;
+      }
+      
+      a {
+        color: #333 !important;
+        text-decoration: underline;
+      }
+      
+      a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: #666;
+      }
+    }
   </style>
 </head>
 <body>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de PDF - Portfolio Jesús González</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .btn-success {
+            background: #28a745;
+        }
+        .btn-success:hover {
+            background: #1e7e34;
+        }
+        .instructions {
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        .preview {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .preview iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Generador de PDF - Portfolio Jesús González</h1>
+        
+        <div class="instructions">
+            <h3>📋 Instrucciones para generar PDF con formato controlado:</h3>
+            <ol>
+                <li><strong>Haz clic en "Ver Portfolio"</strong> para abrir tu portfolio en una nueva pestaña</li>
+                <li><strong>Presiona Ctrl+P</strong> (Windows) o <strong>Cmd+P</strong> (Mac)</li>
+                <li><strong>Cambia el destino</strong> a "Guardar como PDF"</li>
+                <li><strong>Configura las opciones:</strong>
+                    <ul>
+                        <li>Márgenes: <strong>Mínimos</strong> o <strong>Sin márgenes</strong></li>
+                        <li>Escala: <strong>100%</strong></li>
+                        <li>Páginas: <strong>Todas</strong></li>
+                        <li>Fondo: <strong>Incluir gráficos de fondo</strong> ✅</li>
+                    </ul>
+                </li>
+                <li><strong>Haz clic en "Guardar"</strong> y elige la ubicación</li>
+            </ol>
+        </div>
+
+        <div class="preview">
+            <h3>👀 Vista previa del Portfolio</h3>
+            <iframe src="index.html" title="Portfolio Jesús González"></iframe>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="btn" onclick="openPortfolio()">🚀 Ver Portfolio</button>
+            <button class="btn btn-success" onclick="printInstructions()">🖨️ Imprimir Instrucciones</button>
+        </div>
+    </div>
+
+    <script>
+        function openPortfolio() {
+            // Abrir el portfolio en una nueva pestaña
+            window.open('index.html', '_blank');
+        }
+
+        function printInstructions() {
+            // Imprimir solo las instrucciones
+            const printContent = `
+                <html>
+                <head>
+                    <title>Instrucciones PDF - Portfolio Jesús González</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; }
+                        h1 { color: #333; }
+                        .step { margin: 15px 0; padding: 10px; background: #f8f9fa; border-left: 4px solid #007bff; }
+                        .highlight { background: #fff3cd; padding: 2px 5px; border-radius: 3px; }
+                    </style>
+                </head>
+                <body>
+                    <h1>📋 Instrucciones para generar PDF del Portfolio</h1>
+                    
+                    <div class="step">
+                        <strong>Paso 1:</strong> Abrir el portfolio en el navegador
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Paso 2:</strong> Presionar <span class="highlight">Ctrl+P</span> (Windows) o <span class="highlight">Cmd+P</span> (Mac)
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Paso 3:</strong> Cambiar destino a <span class="highlight">"Guardar como PDF"</span>
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Paso 4:</strong> Configurar opciones:
+                        <ul>
+                            <li>Márgenes: <span class="highlight">Mínimos</span></li>
+                            <li>Escala: <span class="highlight">100%</span></li>
+                            <li>Fondo: <span class="highlight">Incluir gráficos</span> ✅</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Paso 5:</strong> Hacer clic en <span class="highlight">"Guardar"</span>
+                    </div>
+                    
+                    <hr>
+                    <p><em>Portfolio: Jesús González - Developer + Docente</em></p>
+                </body>
+                </html>
+            `;
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>
